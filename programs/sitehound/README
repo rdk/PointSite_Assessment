@@ -1,0 +1,60 @@
+*******************************************************************************
+** EasyMIFs & SiteHound                                                      ** 
+** tools for Molecular Interaction Fields and binding site identification    **
+** on protein structures                                                     **
+** developed by Dario Ghersi in Roberto Sanchez Lab                          **
+** build 050609                                                              **
+** Copyright (C) 2009 Mount Sinai School of Medicine                         **
+**                                                                           **
+** This software is distributed in the hope that it will be useful, but      **
+** WITHOUT ANY WARRANTY; without even the implied warranty of                **
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.                      **
+*******************************************************************************
+
+0. Requirements
+The programs have been tested on Linux (Ubuntu distro), Mac OS X and Windows XP
+A working Python environment is required to run the scripts that are provided to
+automate the calculations.
+
+1. INTRODUCTION
+
+EasyMIFs and SiteHound are meant to be used from the command line (shell
+under UNIX and DOS prompt under Windows). Both programs can be used
+individually, but a Python script to streamline the process of binding site 
+identification is provided, and its use is therefore recommended.
+
+2. INSTALLATION
+The suite does not require any special installation procedure. The archive
+downloaded from the web must be uncompressed and can then be placed anywhere.
+
+3. BASIC USAGE WITH THE 'auto.py' SCRIPT
+The auto.py provided in the root directory of the suite allows the user to
+carry out binding site identification using Molecular Interaction Fields in a
+streamlined fashion. An example of the most basic use:
+
+auto.py -i PDB.pdb -p CMET
+
+auto.py will automatically prepare the pdb, calculate the Interaction Energy
+Map and carry out cluster analysis (the final step of binding site
+identification). A short description of all the options that the script
+supports can be obtained by calling the script with the usual -h or --help flag.
+The options supported by the script are the following:
+
+-i --input	The pdb file
+-p --probe	The probe type, either CMET (methyl) or OP (phosphate oxygen)
+-k --clean	Remove HETATM from the pdb
+-r --resolution	The resolution of the grid in Angstrom (default: 1.0)
+-c --center	The center of the grid (default: center of the protein)
+-d --dimension	The dimensions of the box (default: whole protein)
+-e --energy	(default: -8.9 for CMET, -8.5 for OP)
+-l --linkage	Either 'single' or 'average' (default: 'average')
+-s --spatial	The spatial cutoff (default: 1.1 for single linkage, 7.8 for average)
+-x --pdb2gmx	Print the output of pdb2gmx
+-o --log	Send the output messages to a log file
+-h --help	Show this help
+
+4. IMPORTANT NOTE
+The programs work only on "clean" PDBs, i.e. files that do not have HETATM
+records. The user can get rid of HETATM by using the -k or --clean option in
+the auto.py script, or manually take care of that. Furthermore, missing atoms
+or residues are not allowed.

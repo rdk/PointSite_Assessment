@@ -1,0 +1,35 @@
+#----------
+# abstract:
+#----------
+
+This package is a python script allows user to submit pdb request to 'https://playmolecule.com/deepsite' and download the result.
+
+
+
+#--------------
+# installation:
+#--------------
+
+At the first time, please run './install.sh' to install the requirements in the '../selenium/' folder
+
+
+#-------------
+# config file:
+#-------------
+
+Users may use their own email and password, as shown in 'config.json' file.
+
+
+#-----------------
+# running example:
+#-----------------
+
+#-> single chain submission
+./deepsite_submit.sh -i example/1pazA.pdb
+
+#-> multiple chain submission
+./deepsite_submit.sh -i example/11bg_xyz.pdb
+
+#-> specify a certain account for batch process
+./deepsite_submit.sh -i example/1pazA.pdb -c batch_id/022.json
+

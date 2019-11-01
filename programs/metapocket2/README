@@ -1,0 +1,25 @@
+#----------
+# abstract:
+#----------
+
+This package is a python script allows user to submit pdb request to 'https://projects.biotec.tu-dresden.de/metapocket' and download the result.
+
+
+
+#--------------
+# installation:
+#--------------
+
+At the first time, please run './install.sh' to install the requirements in the '../selenium/' folder
+
+
+#-----------------
+# running example:
+#-----------------
+
+#-> single chain submission
+./metapocket2_submit.sh -i example/1pazA.pdb
+
+#-> multiple chain submission
+./metapocket2_submit.sh -i example/11bg_xyz.pdb
+
