@@ -39,7 +39,7 @@ fi
 #        Please just run blind dataset by setting Assess_Switch to 0
 
 #--- for each dataset ----#
-for i in `cat dataset_list`
+for i in `cat $dataset_list_wrapper`
 do
 
 #-> get data name
@@ -69,10 +69,10 @@ $cur_root/script_run/sitehound_run.sh $suffix $gt_dir $pred_dir $cpunum $cur_roo
 
 #-> 4. deepsite (not recommend to run, as it will submit the jobs to the website and need 300 to 500 seconds for each job!!)
 #               (also, the maximal length for deepsite shall below 1000 amino acids!!)
-$cur_root/script_run/deepsite_run.sh $suffix $gt_dir $pred_dir $threadnum $cur_root/deepsite
+#$cur_root/script_run/deepsite_run.sh $suffix $gt_dir $pred_dir $threadnum $cur_root/deepsite
 
 #-> 5. metapocket2 (not recommend to run, as it will submit the jobs to the website and need 300 to 500 seconds for each job!!)
-$cur_root/script_run/metapocket2_run.sh $suffix $gt_dir $pred_dir $threadnum $cur_root/metapocket2
+#$cur_root/script_run/metapocket2_run.sh $suffix $gt_dir $pred_dir $threadnum $cur_root/metapocket2
 
 #-> TER. remove the created data file
 rm -f $gt_dir/$suffix
