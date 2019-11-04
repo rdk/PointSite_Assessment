@@ -1,5 +1,5 @@
 ####### define the main_root of PointSite here !!!!! ########
-#PointSite_ROOT=/home/wangsheng/GitBucket/
+#PointSite_HOME=/home/wangsheng/GitBucket/
 #============== global variables defined here ========= # start
 declare PointSite_HOME           #-> root directory
 if [ -z "${PointSite_HOME}" ]
