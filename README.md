@@ -36,10 +36,10 @@ sudo yum install libX11.i686
 It is well known that sitehound will report a bug if the input PDB contains ANY missing atoms which is very common.
 Thus, to handle such situations, we have to "reconstruct" the PDB with the following module:
 ```sh
-`BuildModel_Package/util/Complete_PDB.sh 5ow0A_xyz.pdb /tmp/5ow0A_xyz.pdb`
+BuildModel_Package/util/Complete_PDB.sh 5ow0A_xyz.pdb /tmp/5ow0A_xyz.pdb
 ```
 ### 4. Selenium
-This is the package for command-line based Web Server submission for deepsite and metapocket2
+This is the package for command-line based Web Server submission for `deepsite` and `metapocket2`
 
 
 # Run of Comparison Methods
