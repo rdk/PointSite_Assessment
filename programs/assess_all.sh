@@ -7,6 +7,12 @@ then
 	#echo "PointSite_HOME not set. Use default value '~/GitBucket'"
 	PointSite_HOME=~/GitBucket
 fi
+#--- assess switch: run simple or all ----#
+declare Assess_Switch
+if [ -z "${Assess_Switch}" ]
+then
+	Assess_Switch=0          #-> by default, we only assess 'blind'
+fi
 
 
 #============== Part II: run assessment for each method ===============#
@@ -16,41 +22,32 @@ cpunum=32
 cutoff_truth=6.5
 cutoff_pred=6.5
 method_list=`pwd`/method_list
-
-
-#============= run simple test =====================#
-#--- root input/output ----#
-root_input=`pwd`/example
-root_output=`pwd`/example
-
-#-> get data name
-orig_data=blind
-proc_data=blind
-
-#-> define input
-suffix=${proc_data}_data
-list=$root_input/${proc_data}_list
-gt_dir=$root_input/${proc_data}_gt
-pred_dir=$root_output/${proc_data}_out
-
-#-> define output
+#--- output directory ----#
 outdir=/tmp/tmp_assess
 mkdir -p $outdir
+#---- use SIMPLE or ALL switch -----#
+if [ $Assess_Switch -eq 1 ]
+then
+	dataset_list_wrapper=dataset_list
+	root_input=$PointSite_HOME/PointSite_TestData/
+	root_output=$PointSite_HOME/PointSite_Assessment/testset_result/
+else
+	orig_data=blind
+	echo "$orig_data|$orig_data" > blind_dataset
+	dataset_list_wrapper=blind_dataset
+	root_input=$PointSite_HOME/PointSite_Assessment/programs/example/
+	root_output=$PointSite_HOME/PointSite_Assessment/programs/example/
+fi
 
 
-#============= run all test sets ====================#
-#--- root input/output ---#
-root_input=$PointSite_HOME/PointSite_TestData/
-root_output=$PointSite_HOME/PointSite_Assessment/testset_result/
-
-
+#=================================== run assessment ======================#
 #--- for each cutoff_pred
 for cutoff_pred in 4.5 5.5 6.5
 do
 echo "#++++++++++++++++++++ cutoff_pred $cutoff_pred +++++++++++++++#"
 
 #--- for each dataset ----#
-for i in `cat dataset_list`
+for i in `cat $dataset_list_wrapper`
 do
 
 #-> get data name
@@ -100,12 +97,19 @@ do
 
 			fi
 		done
-		awk 'BEGIN{a=0;b=0;c=0;d=0;e=0;f=0;g=0;h=0;z=0;y=0;}{if(NF==26){a+=$4;b+=$6;c+=$8;d+=$12;e+=$14;f+=$19;g+=$21;z+=$24;y+=$26;h++}}END{print a/c" "b/c" "d/c" "e/c" "f/h" "g/h" "c" "h" "z/h" "y/h}' $outdir/${method}_${suffix}.assess_$param
+		#awk 'BEGIN{a=0;b=0;c=0;d=0;e=0;f=0;g=0;h=0;z=0;y=0;}{if(NF==26){a+=$4;b+=$6;c+=$8;d+=$12;e+=$14;f+=$19;g+=$21;z+=$24;y+=$26;h++}}END{print a/c" "b/c" "d/c" "e/c" "f/h" "g/h" "c" "h" "z/h" "y/h}' $outdir/${method}_${suffix}.assess_$param
+		awk 'BEGIN{a=0;b=0;c=0;d=0;e=0;f=0;g=0;h=0;z=0;y=0;}{if(NF==26){a+=$4;b+=$6;c+=$8;d+=$12;e+=$14;f+=$19;g+=$21;z+=$24;y+=$26;h++}}END{print "DCA "a/c" | atom-IoU "f/h}' $outdir/${method}_${suffix}.assess_$param
 	done
 done
 
 done
 
 done
+
+#--- remove temp data ----#
+if [ $Assess_Switch -eq 0 ]
+then
+	rm -f blind_dataset
+fi
 
 
