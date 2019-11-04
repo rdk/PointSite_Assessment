@@ -7,7 +7,7 @@ This is the assement part of [PointSite](XXX) on Python 3.6, Pytorch 1.1.0. The 
 To install p2rank, we need install [gradle](https://gradle.org/install/)
 Also, 
 ```sh 
-$ export PATH=$PATH:/opt/gradle/gradle-5.6.2/bin
+export PATH=$PATH:/opt/gradle/gradle-5.6.2/bin
 ```
 
 ### 2. [fpocket](https://github.com/Discngine/fpocket)
