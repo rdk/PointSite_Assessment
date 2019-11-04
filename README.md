@@ -2,7 +2,10 @@
 
 This is the assement part of [PointSite](https://github.com/PointSite/PointSite_Inference) on Python 3.6, Pytorch 1.1.0. The model generates binding atoms segmentation masks for each query protein. It's based on Submanifold Sparse Convolutional (SSC) based U-Net.
 
-# Installation of Comparison Methods
+
+
+
+## Installation of Comparison Methods
 ### 1. [p2rank](https://github.com/rdk/p2rank)
 To install p2rank, we need install [gradle](https://gradle.org/install/)
 Also, 
@@ -42,7 +45,7 @@ BuildModel_Package/util/Complete_PDB.sh 5ow0A_xyz.pdb /tmp/5ow0A_xyz.pdb
 This is the package for command-line based Web Server submission for `deepsite` and `metapocket2`
 
 
-# Run of Comparison Methods
+## Run of Comparison Methods
 
 It provides the details for the inference part of all comparison methods, which consists of four parts in `programs` folder:
 * Run each method for a given dataset (not recommend to run, as ALL results have been generated in `testset_result` folder)
@@ -62,4 +65,7 @@ bash pointsite_iou.sh
 bash pointsite_merge.sh
 ```
 Note that by default, all previous scripts will assess `blind` dataset. To assess the other six test datasets, simply type `export Assess_Switch=1` and re-run the corresponding script.
+
+To change the root directory of `PointSite`, simply type `export PointSite_HOME=<the folder contains PointSite_Assessment and PointSite_TestData>`.
+
 
