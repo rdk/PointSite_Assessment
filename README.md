@@ -3,7 +3,7 @@
 This is the assement part of [PointSite](https://github.com/PointSite/PointSite_Inference) on Python 3.6, Pytorch 1.1.0. The model generates binding atoms segmentation masks for each query protein. It's based on Submanifold Sparse Convolutional (SSC) based U-Net.
 
 
-## Run of Comparison Methods
+## Run and Assessment of Comparison Methods
 
 It provides the details for the inference part of all comparison methods, which consists of four parts in `programs` folder:
 * Run each method for a given dataset (not recommend to run, as ALL results have been generated in `testset_result` folder)
