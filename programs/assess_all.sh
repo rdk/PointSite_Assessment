@@ -26,14 +26,12 @@ method_list=`pwd`/method_list
 outdir=/tmp/tmp_assess
 mkdir -p $outdir
 #---- use SIMPLE or ALL switch -----#
-if [ $Assess_Switch -eq 1 ]
+if [ $Assess_Switch -eq 1 ]         #-> ALL test datasets
 then
 	dataset_list_wrapper=dataset_list
 	root_input=$PointSite_HOME/PointSite_TestData/
 	root_output=$PointSite_HOME/PointSite_Assessment/testset_result/
-else
-	orig_data=blind
-	echo "$orig_data|$orig_data" > blind_dataset
+else                                #-> blind dataset
 	dataset_list_wrapper=blind_dataset
 	root_input=$PointSite_HOME/PointSite_Assessment/programs/example/
 	root_output=$PointSite_HOME/PointSite_Assessment/programs/example/
@@ -105,11 +103,4 @@ done
 done
 
 done
-
-#--- remove temp data ----#
-if [ $Assess_Switch -eq 0 ]
-then
-	rm -f blind_dataset
-fi
-
 
