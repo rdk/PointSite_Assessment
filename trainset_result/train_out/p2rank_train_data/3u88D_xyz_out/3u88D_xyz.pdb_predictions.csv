@@ -1,2 +1,0 @@
-name, rank, score, sas_points, surf_atoms, center_x, center_y, center_z, residue_ids, surf_atom_ids   
-pocket1,1,4.0133,43,30,-36.3149,32.5588,39.2646,D_353 D_354 D_355 D_380 D_383 D_385 D_389 D_390 D_393 D_396 D_397 D_423,1 2 3 10 14 21 25 28 177 196 212 213 240 241 242 245 248 251 273 274 275 276 277 278 279 302 303 309 487 489
