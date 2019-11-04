@@ -27,6 +27,15 @@ distri=$7
 tmpdir=/tmp/sitehound_tmpdir
 mkdir -p $tmpdir
 
+#-- check BuildModel_Package
+run_complete=1
+if [ ! -s "$buildmod/util/Complete_PDB.sh" ]
+then
+	echo "$buildmod/util/Complete_PDB.sh file not found or null !"
+	run_complete=0
+fi
+
+
 #-- run sitehound in a batch
 rm -f sitehound_proc
 for i in `cat $indir/$data`
@@ -35,8 +44,13 @@ do
 	fulnam=`basename $i`
 	relnam=${fulnam%.*}
 	#--| run sitehound
-	echo "$buildmod/util/Complete_PDB.sh $indir/${relnam}.pdb $tmpdir/${relnam}.pdb; $home/auto.py -i $tmpdir/${relnam}.pdb -p CMET;" \
-		>> sitehound_proc
+	if [ $run_complete -eq 1 ]
+	then
+		echo "$buildmod/util/Complete_PDB.sh $indir/${relnam}.pdb $tmpdir/${relnam}.pdb; $home/auto.py -i $tmpdir/${relnam}.pdb -p CMET;" \
+			>> sitehound_proc
+	else
+		echo "cp $indir/${relnam}.pdb $tmpdir/${relnam}.pdb; home/auto.py -i $tmpdir/${relnam}.pdb -p CMET;" >> sitehound_proc
+	fi
 done
 $distri/distribute_bash.sh sitehound_proc $cpunum ./
 rm -f sitehound_proc
