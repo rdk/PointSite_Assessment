@@ -20,7 +20,8 @@ fi
 cur_root=`pwd`
 cpunum=32
 threadnum=8
-#buildmod=/home/wangs0c/WS_Program/RaptorX-Threading/BuildModel_Package
+#-> the package to reconstruct missing atoms for SiteHound
+buildmod=/home/wangs0c/WS_Program/RaptorX-Threading/BuildModel_Package 
 #---- use SIMPLE or ALL switch -----#
 if [ $Assess_Switch -eq 1 ]         #-> ALL test datasets
 then
