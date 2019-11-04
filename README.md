@@ -44,9 +44,22 @@ This is the package for command-line based Web Server submission for `deepsite` 
 
 # Run of Comparison Methods
 
-It provides the details for the inference part of all comparison methods, which consists of five parts.
-* Run each method for a given dataset
+It provides the details for the inference part of all comparison methods, which consists of four parts in `programs` folder:
+* Run each method for a given dataset (not recommend to run, as ALL results have been generated in `testset_result` folder)
+```sh
+#bash run_all.sh
+```
 * Run assessment for each method
+```sh
+bash assess_all.sh
+```
 * Assess PointSite's IoU
+```sh
+bash pointsite_iou.sh
+```
 * PointSite assisted merged results of each method
+```sh
+bash pointsite_merge.sh
+```
+Note that by default, all previous scripts will assess `blind` dataset. To assess the other six test datasets, simply type `export Assess_Switch=1` and re-run the corresponding script.
 
