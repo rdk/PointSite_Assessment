@@ -58,21 +58,21 @@ mkdir -p $pred_dir
 
 #------------ run comparison methods ----------#
 echo "#-> 1. p2rank"
-./p2rank_run.sh $suffix $gt_dir $pred_dir $cpunum $cur_root/p2rank
+$cur_root/script_run/p2rank_run.sh $suffix $gt_dir $pred_dir $cpunum $cur_root/p2rank
 
 echo "#-> 2. fpocket"
-./fpocket_run.sh $suffix $gt_dir $pred_dir $cpunum $cur_root/fpocket $cur_root/util
+$cur_root/script_run/fpocket_run.sh $suffix $gt_dir $pred_dir $cpunum $cur_root/fpocket $cur_root/util
 
 echo "#-> 3. sitehound"
-./sitehound_run.sh $suffix $gt_dir $pred_dir $cpunum $cur_root/sitehound $buildmod $cur_root/util
+$cur_root/script_run/sitehound_run.sh $suffix $gt_dir $pred_dir $cpunum $cur_root/sitehound $buildmod $cur_root/util
 #[note]: neglect those "errors" as sitehound can't deal with non-standard amino acids.
 
 #-> 4. deepsite (not recommend to run, as it will submit the jobs to the website and need 300 to 500 seconds for each job!!)
 #               (also, the maximal length for deepsite shall below 1000 amino acids!!)
-./deepsite_run.sh $suffix $gt_dir $pred_dir $threadnum $cur_root/deepsite
+$cur_root/script_run/deepsite_run.sh $suffix $gt_dir $pred_dir $threadnum $cur_root/deepsite
 
 #-> 5. metapocket2 (not recommend to run, as it will submit the jobs to the website and need 300 to 500 seconds for each job!!)
-./metapocket2_run.sh $suffix $gt_dir $pred_dir $threadnum $cur_root/metapocket2
+$cur_root/script_run/metapocket2_run.sh $suffix $gt_dir $pred_dir $threadnum $cur_root/metapocket2
 
 #-> TER. remove the created data file
 rm -f $gt_dir/$suffix
