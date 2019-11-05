@@ -1,7 +1,7 @@
 # PointSite: a point cloud segmentation tool for identification of protein ligand binding atoms
 
 This is the assement part of [PointSite](https://github.com/PointSite/PointSite_Inference) on Python 3.6, Pytorch 1.1.0. The model generates binding atoms segmentation masks for each query protein. It's based on Submanifold Sparse Convolutional (SSC) based U-Net.
-
+![](https://raw.githubusercontent.com/PointSite/PointSite__Assessment/programs/sparseconv.pdf)
 
 ## Run and Assessment of Comparison Methods
 
