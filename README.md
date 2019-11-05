@@ -8,7 +8,7 @@ This is the assement part of [PointSite](https://github.com/PointSite/PointSite_
 It provides the details for the inference part of all comparison methods, which consists of four parts in `programs` folder:
 * Run each method for a given dataset (not recommend to run, as ALL results have been generated in `testset_result` folder)
 ```sh
-#bash run_all.sh
+bash run_all.sh
 ```
 * Run assessment for each method
 ```sh
